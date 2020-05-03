@@ -9,3 +9,7 @@ output "target_group" {
 output "security_group" {
   value = aws_security_group.this
 }
+
+output "route53_record" {
+  value = aws_route53_record.this
+}
