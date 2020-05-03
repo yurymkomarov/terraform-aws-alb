@@ -44,3 +44,24 @@ variable "vpc_subnets" {
   type        = list(string)
   description = "A list of subnet IDs to attach to the ALB."
 }
+
+variable "create_route53_record" {
+  type        = bool
+  description = "Create AWS Route53 CNAME record for the ALB."
+}
+
+variable "route53_record_name" {
+  type        = string
+  description = "The name of the Route53 record."
+}
+
+variable "route53_record_ttl" {
+  type        = number
+  description = "The TTL of the Route53 record"
+  default     = 300
+}
+
+variable "route53_zone_id" {
+  type        = string
+  description = "The ID of the hosted zone to contain this record."
+}

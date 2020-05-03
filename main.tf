@@ -127,3 +127,14 @@ resource "aws_security_group" "this" {
     create_before_destroy = true
   }
 }
+
+resource "aws_route53_record" "this" {
+  count = var.create_route53_record ? 1 : 0
+
+  name            = var.route53_record_name
+  type            = "CNAME"
+  zone_id         = var.route53_zone_id
+  allow_overwrite = true
+  ttl             = var.route53_record_ttl
+  records         = [aws_lb.this.zone_id]
+}

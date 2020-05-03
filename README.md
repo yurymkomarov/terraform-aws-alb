@@ -6,7 +6,7 @@ This module provides a Load Balancer resources:
 - target group
 - security group
 
-# Input variables
+## Input variables
 - `name` - Name that will be used in resources names and tags
 - `health_check_path` - The destination for the health check request
 - `health_check_matcher` - The HTTP codes to use when checking for a successful response from a target
@@ -14,8 +14,12 @@ This module provides a Load Balancer resources:
 - `ingress_cidr_block` - The CIDR IP range that is permitted have access to AWS ALB. Note: a value of 0.0.0.0/0 will allow access from ANY IP address
 - `vpc_id` - The identifier of the VPC in which to create the target group
 - `vpc_subnets` - A list of subnet IDs to attach to the ALB
+- `create_route53_record` - Create AWS Route53 CNAME record for the ALB
+- `route53_record_name` - The name of the Route53 record
+- `route53_record_ttl` - The TTL of the Route53 record
+- `route53_zone_id` - The ID of the hosted zone to contain this record
 
-# Output variables
+## Output variables
 - `lb`
     - `id` - The ARN of the load balancer
     - `arn` - The ARN of the load balancer
@@ -36,3 +40,6 @@ This module provides a Load Balancer resources:
     - `description` - The description of the security group
     - `ingress` - The ingress rules
     - `egress` - The egress rules
+- `route53_record`
+    - `name` - The name of the record
+    - `fqdn` - FQDN built using the zone domain and name
